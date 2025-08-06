@@ -1,0 +1,18 @@
+*.pyc
+.vscode
+output
+outputs
+build
+*.egg-info
+tensorboard_3d
+screenshots
+data
+*.exr
+*.hdr
+*.so
+output*
+*.egg-info
+PKG-INFO
+__pycache__
+# submodules
+

@@ -1,0 +1,17 @@
+glfw==2.9.0
+imageio==2.31.1
+kornia==0.8.1
+matplotlib==3.7.2
+mediapy==1.2.4
+numpy==1.24.3
+open3d==0.16.0
+opencv_python==4.9.0.80
+Pillow==11.3.0
+plyfile==1.1.2
+PyOpenGL==3.1.9
+scipy==1.12.0
+setuptools==68.0.0
+scikit-image==0.22.0
+tqdm==4.65.0
+trimesh==4.3.0
+chamferdist==1.0.3
