@@ -26,6 +26,9 @@ if __name__ == '__main__':
     opt = parser.parse_args()
     scenes = os.listdir(opt.path)
     for scene in scenes:
+	if scene == "_blender":
+            continue
+
         root = os.path.join(opt.path, scene)
         output_path = os.path.join(opt.path + "_blender", scene)
         if not os.path.exists(output_path):
