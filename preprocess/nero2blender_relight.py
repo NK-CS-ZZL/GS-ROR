@@ -36,7 +36,7 @@ if __name__ == '__main__':
         img_ids = [str(k) for k in range(img_num)]
         cams = [read_pickle(f'{root}/{k}-camera.pkl') for k in range(img_num)]  # pose(3,4)  K(3,3)
         img_files = [f'{root}/{k}.png' for k in range(img_num)]
-        depth_files = [f'{root}/{k}-depth0001.exr' for k in range(img_num)]
+        depth_files = [f'{root}/{k}-depth.png' for k in range(img_num)]
 
         frames = []
         os.makedirs(f'{output_path}/depth', exist_ok=True)
@@ -49,7 +49,7 @@ if __name__ == '__main__':
                 'file_path': os.path.join("rgb", os.path.basename(image)).replace(".png",""),
                 'transform_matrix': c2w.tolist(),
             })
-            depth = imread(depth)[:, :, 0]
+            depth = imread(depth)[:, :]
             depth = depth.astype(np.float32) / 65535 * 15
             mask = depth < 14.5
             normal = normal_from_depth_image(torch.from_numpy(depth).float(), 
@@ -91,7 +91,7 @@ if __name__ == '__main__':
         print(f'[INFO] Process rgbs')
         print(f'[INFO] write to {img_out_path}')
         for img_id in img_ids:
-            depth = imread(f'{root}/{img_id}-depth0001.exr')[:, :, 0]
+            depth = imread(f'{root}/{img_id}-depth.png')[:, :]
             depth = depth.astype(np.float32) / 65535 * 15
             mask = depth < 14.5
             mask = (mask[...,None] * 255).astype(np.uint8)
